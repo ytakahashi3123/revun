@@ -1,0 +1,175 @@
+# Mode decomposition routine for VTK unstructured grid
+# Version: 0.80
+
+# Modes performed
+kind_mode_performed:
+  #- snapshotpod
+  - dmd
+
+# Input data directory and file
+dir_input:  ../data_input/dscapsule_static_surface/output_surface_flow
+file_input_base: surface_flow.vtk
+# When using initial VTK file for mapping variables: True and input file name
+flag_read_samplevtk: False
+dir_read_samplevtk: ../data_input/dscapsule_static_surface/output_surface_flow
+file_read_samplevtk: flow_00300.vtk
+
+# Start, end, and interval step of input file
+step_start: 1900
+step_end: 1990
+step_interval: 10
+step_digit: 5
+
+# Time step used in the original simulation (In this MA, time step is scaled by interval step; time_step*step_interval)
+time_step: 1.0e-5
+
+# Taget variables to run POD
+kind_flowvar: 'Pressure'
+kind_flowvar_replace:
+  - False
+  - 'Velocity'
+  - 'Density'
+
+# Maximum mode to display
+mode_pod_index_maximum: 10
+mode_dmd_index_maximum: 10
+
+# Subtract time-mean value from variable
+flag_subtraction_mean: True
+# Add mean data to reconstructed results, which is valid when "flag_subtraction_mean" is True
+flag_dmd_reconstruct_add_mean: True
+# File directory and name of mean flow variables
+dir_result_mean: './result_mean'
+file_result_mean: output_flowmean.vtu
+
+# POD
+dir_result_pod: './result_pod'
+flag_result_pod_eigenvalue: True
+file_result_pod_eigenvalue: output_pod_eigenvalue.dat  
+flag_result_pod_temporal: True
+file_result_pod_temporal: output_pod_temporal.dat  
+flag_result_pod_spatial: True
+file_result_pod_spatial: output_pod_spatial.vtu
+
+# DMD
+dir_result_dmd: './result_dmd'
+flag_result_dmd_singularvalue: True
+file_result_dmd_singularvalue: output_dmd_singularvalue.dat  
+flag_result_dmd_eigenvalue: True
+file_result_dmd_eigenvalue: output_dmd_eigenvalue.dat  
+flag_result_dmd_oscillation: True
+file_result_dmd_oscillation: output_dmd_oscillation.dat  
+flag_result_dmd_temporal: True
+file_result_dmd_temporal: output_dmd_temporal.dat  
+flag_result_dmd_spatial: True
+file_result_dmd_spatial: output_dmd_spatial.vtu
+
+# Sort based on amplitude
+flag_dmd_sort: False
+
+# DMD reconsctuct
+dir_reconstruct_dmd: './reconstruct_dmd'
+flag_dmd_reconstruct: True
+file_dmd_reconstruct: output_reconstruct.vtu
+# If all modes need to be considered, set the flag below is valid
+flag_allmodes_reconstruct: True
+# If mode selective
+mode_dmd_reconstruct:
+  - 
+    - 'Rfull'
+    - 1
+    - 30
+  - 
+    - 'R1-2'
+    - 1
+    - 2
+  - 
+    - 'R3-6'
+    - 3
+    - 6
+
+## For mode sensing using aerodynamic forces 
+#flag_dmd_aerodynamic: True
+#file_dmd_aerodynamic: output_dmd_aerodynamic.dat
+## Reference origins for moment computation in x,y,z in meter
+#aerodynamic_center:
+#  - 0.0
+#  - 0.0
+#  - 0.0
+## Maximum index of modes considered in sensing approach
+#num_considered_aerodynamic: 5
+#file_sensing_aerodynamic: output_dmd_aerodynamic_Reconstructed.dat
+#time_offset_aerodynamic: 0.0
+## Reference values for aerpdynamic coefficient
+#flag_aerodynamic_coefficient: True 
+#aerodynamic_reference_density: 1.0
+#aerodynamic_reference_velocity: 1.0
+#aerodynamic_reference_area: 1.5708
+#aerodynamic_reference_length:  1.0
+
+## For mode sensing using displacement
+#flag_dmd_displacement: True
+#file_dmd_displacement: output_dmd_displacement.dat
+## Feature coordinate to extract displacements
+#coordinate_feature_displacement:
+#  - 0.6
+#  - 0.2
+#  - 0.0
+## Maximum index of modes considered in sensing approach
+#num_considered_displacement: 5
+## File name
+#file_sensing_displacement: output_dmd_displacement_Reconstructed.dat
+#time_offset_displacement: 1.505
+
+# For mode sensing using feature value
+dir_feature: './extract_feature'
+file_dmd_feature: output_feature.dat
+# Feature coordinate to extract displacements
+coordinate_feature:
+  - 0.01333
+  - 0.0
+  - 0.0
+
+# For mode sensing using aerodynamic forces 
+flag_aerodynamic_coefficient: True 
+aerodynamic_reference_density: 0.882
+aerodynamic_reference_velocity: 386.6
+aerodynamic_reference_area: 0.005027
+aerodynamic_reference_length:  0.08
+
+# Mode sensing
+# Maximum index of modes considered in sensing approach
+num_considered_feature: 5
+# File name
+file_sensing_feature: output_feature_reconstructed.dat
+time_offset_feature: 0.0
+
+# Display detailed messages for debugging (test)
+flag_verbose: True
+
+# Noise test: not used normally
+dir_result_noise: './result_noise'
+file_result_noise: noise.vtu
+magnitude_noise: 0.e-4
+coordinate_feature_noise: 
+  - 0.6
+  - 0.2
+  - 0.0
+file_hisotry_noise: 'history_noise.dat'
+time_offset_noise: 0.0
+
+# Extracting data on point over time probe technique
+dir_result_probe: './result_probe'
+file_history_probe: history_probe.dat
+coordinate_feature_probe:
+  - 
+    - probe1
+    - 0.0
+    - 0.0
+    - 0.0
+  - 
+    - probe2
+    - 1.0
+    - 0.0
+    - 0.0
+time_offset_probe: 0.0

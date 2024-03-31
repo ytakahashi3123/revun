@@ -1,0 +1,20 @@
+# Mode decomposition routine for VTK unstructured grid
+# Version: 0.80
+
+# Input data directory and file
+dir_input: imagefiles
+file_input_base: vorticity.png
+
+# Start, end, and interval step of input file
+step_start: 0
+step_end: 10
+step_interval: 1
+step_digit: 4
+
+# Time step used in the original simulation (In this MA, time step is scaled by interval step; time_step*step_interval)
+time_step: 1.0
+
+# Filtering PNG files (coarse graining)
+dir_result_filterimages: imagefiles_filtered
+file_result_filterimages: vorticity.png
+num_interval_filterimages: 2

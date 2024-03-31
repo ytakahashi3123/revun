@@ -1,0 +1,86 @@
+#---ver0.42-----
+2023/03/31
+In "get_eigen" of snapshot POD routine, sorted varibales is not corrected.
+I fixed this issue
+
+#---ver0.50------
+2023/04/14
+The functions are classfied: general and modal.
+2023/04/15
+Number of theads of OpenMP in the program is deleted. This value is set in environment settings in shell script.
+
+#---ver0.60------
+2023/04/16
+1. Script for DMD reconstruction is newly generated. With this procedure, some functions in modal class are made.
+2. Time step is modified: In this modal analysis, time step is scaled by the step interval, that is, dt_MA=dt_CFD*interval
+
+#---ver0.61------
+2023/04/17
+1. Because the routine to display rank sorted by amplitude, frequency, and amplitude in write_DMD_mode has bug which was fixed.
+
+#---ver0.62------
+2023/04/18
+"time" in "def set_time_variables" was not correctly calculated, which is fixed.
+
+#---ver0.70------
+2023/04/23
+1. Add a routine to calculate aerodynamic forces based on reconstruction modes.
+2. A class for aerodynamic routine is added.
+3. A bug in "spatial_mode" array for reconstruciton reading and writing is fixed.
+4. config.yml file is updated.
+
+#---ver0.71------
+2023/05/02
+1. modal/modal.py: num_rankの計算方法が４つほどあるがそれぞれ整合されていなかった。
+
+#---ver0.72------
+2023/05/05
+1. Chenge output of eigen value distribution
+
+#---ver0.73------
+2023/05/07
+1. Chenge manner to calculate time-mean variables
+2. Change src/reconstruction/reconstruction.py and src/aerodynamic/aerodynamic.py to get reconstruct data and aerodynamic forces on all modes
+3. Change config.yml
+
+#---ver0.74------
+2023/06/16
+1. Mode sensing approach for displacement based on the Greedy algorithm is implemented into the following scripit:
+    src/displacement/displacement.py
+    src/sensing_displacement.py
+2. Change config.yml
+3. Test code for noise validation is implemented into
+    src/noise_test.py and src/noise/noise.py
+4. Shell scripts run_modeco_reconst.sh and run_modeco_sensing.sh for displacement reconstruction and mode sensing are added.
+5. Variables extraction over time by probe approach is implemented into
+    src/probe_points.py and src/probe/probe.py
+
+#---ver0.75------
+2023/06/19
+1. Mode sensing approach in DMD displacement with the case subtracting time-mean variable is valid. 
+   The following scripts are modified:
+    src/displacement/displacement.py
+    src/reconstruct_displacement.py
+    src/sensing_displacement.py
+(Aerodyanamic sensing scripts are not valid yet.)
+2. Output format for reconstructed profile was modified: Accumulation profiles are stored.
+
+#---ver0.80------
+2023/08/21
+1. DMD, reconstruction, and mode sensing for image files are available
+    src/modal/modal.py
+    src/reconstruct_data.py
+    src/reconstruction/reconstruction.py
+2. The order of mode sensing and reconstruction was changed; first: DMD, second: extract_feature, third: mode sensing, and the last: reconstrucitonn
+    src/extract_feature.py
+    src/feature/feature.py
+    src/mode_sensing.py
+3. DMD variable for mode sensing becomes arbitrary. But aerodynamic force is performed in another procedure
+4. Mode sensing using aerodynamic force is available. The order of mode sensing and reconstruction-->first: DMD, second: reconstruciton, and third mode_sensing
+    src/sensing_aerodynamics.py
+5. Change config.yml and add config_support.yml (config_support.yml is for filter_images)
+6. Filter for making image file coarse is available:
+    src/filter_images.py
+    src/filter_data/filter_data,py
+7. Several source files were removed.
+8. Program name: Revun (Reconstruction script for VTK/VTU data format based on numerical mode decomposition)

@@ -1,0 +1,36 @@
+Note for Revun, Yusuke Takahashi
+
+## Comments
+$ Run command
+
+## 1. DMD for CFD/FSI spatiotemporal data
+## Tutorials: work_disp and work_maac_surface
+## 1-1. Mode decomposition
+$ ./run_revun_mode.sh
+## 1-2. Mode sensing
+$ ./run_revun_extract.sh
+$ ./run_revun_sensing.sh
+## 1-3. Reconstruction
+$ run_revun_reconst.sh
+
+
+## 2. DMD based on mode sensing with aerodynamic force
+## Tutorial: work_surface
+## 2-1. Mode decomposition
+$ ./run_revun_mode.sh
+## 2-2. Reconstruction
+$ run_revun_reconst.sh
+## 2-3. Mode sensing
+$ run_revun_sensing_aero.sh
+## 3-3. Reconstruction if necessaary
+$ run_revun_reconst.sh
+
+
+## 3. DMD for PNG files
+## Tutorial: work_png
+## 3-1. Filter to make image files coarse
+$ ./run_revun_extract.sh
+## 3-2. Mode decomposition
+$ ./run_revun_mode.sh
+## 3-2. Reconstruction
+$ run_revun_reconst.sh
