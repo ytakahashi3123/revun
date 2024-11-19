@@ -39,3 +39,5 @@ ytakahashi@eng.hokudai.ac.jp
 
 
 # References
+
+- Yusuke Takahashi, "Spatiotemporal mode extraction for fluid–structure interaction using mode decomposition", Journal of Sound and Vibration, Volume 597, Part A, 2025, pp.118804. https://doi.org/10.1016/j.jsv.2024.118804.

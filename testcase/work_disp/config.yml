@@ -1,5 +1,5 @@
 # Mode decomposition routine for VTK unstructured grid
-# Version: 0.80
+# Version: 1.0.1
 
 # Modes performed
 kind_mode_performed:
@@ -7,11 +7,11 @@ kind_mode_performed:
   - dmd
 
 # Input data directory and file
-dir_input: ../data_input/turekhron_fsi3/solid
+dir_input: turekhron_fsi3/solid
 file_input_base: object_mmh.vtk
 # When using initial VTK file for mapping variables: True and input file name
 flag_read_samplevtk: False
-dir_read_samplevtk:  ../data_input/turekhron_fsi3/solid
+dir_read_samplevtk:  turekhron_fsi3/solid
 file_read_samplevtk: object_mmh_0.vtk
 
 # Start, end, and interval step of input file

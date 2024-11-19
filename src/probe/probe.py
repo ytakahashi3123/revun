@@ -51,9 +51,9 @@ class probe(modal):
       # Reading data
       addfile      = '_'+str(nstep).zfill(step_digit)
       filename_tmp = self.split_file(config['dir_input'] +'/'+ config['file_input_base'],addfile,'.')
-      flag_xml     = self.check_xml(filename_tmp)
+      filename_ext = self.get_extension(filename_tmp)
       print('--Reading VTK/VTU file: ', filename_tmp)
-      reader       = self.get_vtk_reader(filename_tmp,flag_xml)
+      reader       = self.get_vtk_reader(filename_tmp,filename_ext)
 
       # Extract variable
       flowvar_tmp = numpy_support.vtk_to_numpy( reader.GetOutput().GetPointData().GetAbstractArray(kind_flowvar) )

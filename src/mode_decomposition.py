@@ -2,15 +2,15 @@
 
 # REVUN: Reconstruction script for VTK/VTU data format based on numerical mode decomposition
 # Mode decomposition routine for VTK unstructured grid
-# Version: 0.80
+# Version: 1.0.1
 # Author: Yusuke Takahashi, Hokkaido University
 # Contact: ytakahashi@eng.hokudai.ac.jp
-# Date: 2023/08/21
+# Date: 2024/07/31
 
 import os as os
 from modal.modal import modal
 
-version = "0.80"
+version = "1.0.1"
 
 def main():
 
