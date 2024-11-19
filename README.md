@@ -2,6 +2,9 @@
 
 Reconstruction script for VTK/VTU data format based on numerical mode decomposition
 
+## Version
+
+v1.0.1
 
 # Code description
 
