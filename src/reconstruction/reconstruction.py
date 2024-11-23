@@ -107,6 +107,8 @@ class reconstruction(modal):
       var_tmp = np.real( var_list[n] ).astype(np.uint8)
       var_tmp = var_tmp.reshape(height, width, num_component)
       image = Image.fromarray(var_tmp)
+      # rotation_angle=90
+      #image = image.rotate(rotation_angle, expand=True)
       image.save(filename_png)
     return
 
